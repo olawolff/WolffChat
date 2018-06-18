@@ -1,0 +1,4 @@
+.chatbot .message-bot .avatar,
+.chatbot .message-bot .message-content-buttons .btn-chat:before, .chatbot .message-bot .message-content-buttons .btn-chat:after,
+.chatbot .input-form .send-button{background: linear-gradient(140deg,#64A73F,#AFC700);}
+.chatbot .message-bot .message-content-buttons .btn-chat:after { background: #ececec;}
