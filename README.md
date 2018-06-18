@@ -44,6 +44,8 @@ Na pasta `/src/styles/` você irá encontrar o código fonte para gerar os estil
 * Propose new [features](https://github.com/olawolff/WolffChat/issues)
 * Fix an outstanding [issue](https://github.com/olawolff/WolffChat/issues) and submit a [pull request](https://github.com/olawolff/WolffChat/pulls) *(please only commit source code, non-generated files)*
 
+(Em português)
+
 * Reportar [problemas](https://github.com/olawolff/WolffChat/issues) não encontrados 
 * Recomendar novas [funções](https://github.com/olawolff/WolffChat/issues)
 * Corrigir um [problema](https://github.com/olawolff/WolffChat/issues) e enviar um [pull request](https://github.com/olawolff/WolffChat/pulls) *(Por favor, somente commit o código fonte, sem arquivos gerados)*
