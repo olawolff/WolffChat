@@ -39,14 +39,16 @@ export default class BotMessage extends React.Component {
   }
 
   hasAvatar(showAvatar){
-    if(true){
-      return <div className="avatar">
-                <img alt="Avatar do chatbot" src={botIcon} />
-             </div>;
-             
-    }else{
+    showAvatar = true; //temp variable
+    if (!showAvatar) {
       return "";
     }
+  
+    return (
+      <div className="avatar">
+        <img alt="Avatar do chatbot" src={botIcon} />
+      </div>
+    )  
   }
   
   render() {
