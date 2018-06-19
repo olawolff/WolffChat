@@ -9,7 +9,7 @@ import _ from 'underscore';
 class BotClientComponent extends Component {
   constructor() {
     super();
-
+    
     var self = this;
     this.state = {
       messages: [],
@@ -53,7 +53,7 @@ class BotClientComponent extends Component {
   
   handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      this.postMessage();
+      this.postMessage(this);
     }
   }
 
@@ -80,7 +80,7 @@ class BotClientComponent extends Component {
   render() {
     return (
       <div className="chatbot">
-        <History messages={this.state.messages}  />
+        <History messages={this.state.messages} />
         <div className="input-form">
           <input placeholder="Diga-me qual é a sua dúvida..." id="cow-input" className="input-text" type='text' value={this.state.message} onChange={this.handleChange} onKeyPress={this.handleKeyPress} /><br/>
           <button className="btn-chat send-button" onClick={this.postMessage.bind(this)}>Enviar</button>

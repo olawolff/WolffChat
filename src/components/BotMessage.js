@@ -4,7 +4,7 @@ import botIcon from '../images/_icon-Wolff.png';
 
 export default class BotMessage extends React.Component {
 
-  getText(message){
+  getText(message, postMessage){
     if(!message.text){
       var attachment = message.attachments[0]
 
@@ -15,7 +15,7 @@ export default class BotMessage extends React.Component {
                       {attachment.content.text}
                     </div>
                     <div className="message-content-buttons">
-                      {this.getButtons(attachment.content)}
+                      {this.getButtons(attachment.content, postMessage)}
                     </div>
                   </div>;
         default:
@@ -30,9 +30,9 @@ export default class BotMessage extends React.Component {
     }
   }
 
-  getButtons(attachment){
+  getButtons(attachment, postMessage){
     var x = attachment.buttons.map(element => 
-      <Button item={element} />
+      <Button item={element} postMessage={postMessage}/>
     );
 
     return x;
@@ -61,7 +61,7 @@ export default class BotMessage extends React.Component {
       <li className="message-container">
         <div className="message-bot">
           {this.hasAvatar(showAvatar)}
-          {this.getText(message)}
+          {this.getText(message, this.props.postMessage)}
 
           <div className="clean"></div>
           <div className="message-info">
