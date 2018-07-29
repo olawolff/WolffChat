@@ -1,0 +1,9 @@
+{
+    "entidade": "aplication",
+    "status": 1,
+    "path": "/Users/developer/projects/olawolf/chat/",
+    "rewriteGlobalStyles": true,
+    "rewriteIndexPages": false,
+    "type": "react",
+    "name": "chat"
+}

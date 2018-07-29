@@ -1,10 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import BotClientComponent from './App';
-import './styles/chat.css';
-import './styles/colors.css';
+import App from './index.init.js';
 
-ReactDOM.render(
-  <BotClientComponent/>,
-  document.getElementById('root')
-);
+
+ReactDOM.render(<App />, document.getElementById('root'));
+

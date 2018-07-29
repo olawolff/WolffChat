@@ -1,19 +1,48 @@
 {
-  "name": "olawolff-chat",
+  "name": "project",
   "version": "0.1.0",
-  "private": true,
-  "devDependencies": {
-    "@types/react": "^16.3.17",
-    "react-scripts": "1.1.4",
-    "underscore": "^1.9.1"
-  },
+  "private": false,
   "dependencies": {
-    "react": "16.4.1",
-    "react-dom": "16.4.1",
-    "whatwg-fetch": "^2.0.4"
+    "@material-ui/core": "^1.3.0",
+    "@material-ui/icons": "^1.1.0",
+    "history": "^4.6.3",
+    "jquery": "^3.3.1",
+    "jquery-slimscroll": "^1.3.8",
+    "material-ui": "^0.20.1",
+    "md5": "^2.2.1",
+    "moment": "^2.18.1",
+    "qrcode.react": "^0.7.1",
+    "re-carousel": "^2.0.4",
+    "react": "^16.4.1",
+    "react-1app": "^2.1.1",
+    "react-1app-dashboard": "^2.1.1",
+    "react-chat-elements": "^10.0.0",
+    "react-color": "^2.13.4",
+    "react-cookies": "^0.1.0",
+    "react-custom-scroll": "^3.2.2",
+    "react-dom": "^16.4.1",
+    "react-gmaps": "^1.6.0",
+    "react-redux": "^5.0.6",
+    "react-responsive-carousel": "^3.1.27",
+    "react-route": "^1.0.3",
+    "react-router": "^4.1.2",
+    "react-router-dom": "^4.1.2",
+    "react-scripts": "1.0.11",
+    "react-simple-chatbot": "^0.3.2",
+    "redux": "^3.7.2",
+    "redux-router": "^2.1.2"
   },
   "scripts": {
-    "start": "react-scripts start --https",
-    "build": "react-scripts build"
+    "copy-static": "cp -rf ./build/static ../api/public/",
+    "copy-html": "cp -rf ./build/index.html ../api/public/index.html",
+    "copy": "npm run copy-static; npm run copy-html",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "style-loader": "^0.21.0"
   }
 }
