@@ -80,6 +80,7 @@ export default class Chat extends Component {
                 if(!this.props.disabled)this.props.onChange(maskFormate(value,marcara));
               }}
               keyboardType={"default"}
+              id="cow-input"
               placeholder={placeholder}
               inputNative={true}
               onSubmitEditing={()=>this.props.enviar()}
