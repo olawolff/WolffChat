@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 
-import { Content, View, Text, StyleSheet,Image,moment,TextInput,TouchableOpacity,Icon } from "react-1app";
+import { Content, View, StyleSheet,Image,moment,TextInput,TouchableOpacity, } from "react-1app";
 import {Card,Hidden} from '@material-ui/core';
 import VMasker from 'vanilla-masker';
 import {maskFormate} from '../../infra/Util'
+import TextView from "../../components/TextView";
+import Icon from "../../components/Icon";
+
 export default class Chat extends Component {
   constructor(props) {
     super(props);
@@ -94,7 +97,7 @@ export default class Chat extends Component {
               }}>
               <Icon
                 className="content_inputCustom_icon2"
-                style={styles.icon2}
+                
                 fromFontFamily={"Material Design Icons"}
                 name={"send"}
               />
@@ -105,7 +108,7 @@ export default class Chat extends Component {
         <Hidden xsDown>
           <div className="view content_inputCustom_view4">
             <TextInput
-              style={{fontSize: 22}}
+              style={{fontSize: 24}}
               ref={(text) => {this.text = text}}
               className="content_inputCustom_textinput2"
               value={this.props.value}
@@ -125,107 +128,13 @@ export default class Chat extends Component {
               onPress={() => {
                 if(!this.props.disabled) this.save()
               }}>
-                            <Text style={styles.text}>{"Enviar"}</Text>
+                            <TextView className="content_inputCustom_text">{"ENVIAR"}</TextView>
 
             </TouchableOpacity>
           </div>
-          <Text style={styles.text2}>{"As informações aqui inseridas são de uso privado e confidencial"}</Text>
+          <TextView className="content_inputCustom_text2">{"As informações aqui inseridas são de uso privado e confidencial"}</TextView>
         </Hidden>
       </div>
     );
   }
 }
-
-var styles = StyleSheet.create({
-  content: {
-    alignSelf: "stretch",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
-    flexDirection: "column"
-  },
-  view4: {
-    alignSelf: "stretch",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    padding: 10,
-    minHeight: 100,
-    borderRadius: 50,
-    paddingLeft: 40,
-    backgroundColor: "rgba(255,255,255,1)"
-  },
-  textinput2: {
-    color: "rgba(0,0,0,1)",
-    alignSelf: "stretch",
-    textAlign: "left",
-    fontWeight: "normal",
-    flex: 1,
-    fontSize: 22,
-    fontFamily: 'Montserrat'
-  },
-  textinput3: {
-    color: "rgba(0,0,0,1)",
-    alignSelf: "stretch",
-    textAlign: "left",
-    fontWeight: "normal",
-    flex: 1,
-    fontSize: 14,
-    fontFamily: 'Montserrat'
-  },
-  button: {
-    alignSelf: "stretch",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-    borderRadius: 40,
-    width: 180,
-    background: "linear-gradient(140deg,#64A73F,#AFC700)"
-  },
-  view41: {
-    alignSelf: "stretch",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    padding: 5,
-    minHeight: 60,
-    borderRadius: 30,
-    borderStyle: "solid",
-    borderWidth: 1,
-    borderColor: "rgba(200,200,200,1)",
-    paddingLeft: 30,
-    backgroundColor: "rgba(255,255,255,1)"
-  },
-  button2: {
-    alignSelf: "stretch",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-    borderRadius: 25,
-    width: 50,
-    background: "linear-gradient(140deg,#64A73F,#AFC700)"
-  },
-  icon2: {
-    transform: 'rotate(-40deg)',
-    color: "rgba(255,255,255,1)",
-    fontSize: 30,
-    marginLeft:5,
-    marginBottom:3
-  },
-  text: {
-    textAlign: "left",
-    color: "rgba(255,255,255,1)",
-    alignSelf: "auto",
-    fontWeight: "bold",
-    fontSize: 23,
-    fontFamily: 'Montserrat'
-  },
-  text2: {
-    textAlign: "center",
-    color: "#666",
-    alignSelf: "stretch",
-    fontWeight: "normal",
-    fontSize: 13,
-    marginTop:15,
-    fontFamily: 'Montserrat'
-  },
-});

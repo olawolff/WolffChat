@@ -38,6 +38,7 @@
     "copy": "npm run copy-static; npm run copy-html",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:clean": "cd build && mv static/js/*.js js/chat.js && mv static/css/*.css css/chat.css",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

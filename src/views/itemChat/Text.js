@@ -15,39 +15,15 @@ export default class TextChat extends Component {
     if(position=='left') return{  borderTopLeftRadius:1}
     return {  borderTopRightRadius:1};
   }
-    render() {
+
+  render() {
       return (
-        <View style={styles.content}>
-          <View style={[styles.view2,this.position(this.props.position)]}>
+        <div className={this.props.position == "left" && this.props.text == "Confirma??" ? "itemChat_text_content_left" : "itemChat_text_content_right"}>
+          <View className="itemChat_text_view2 " style={this.props.avatar ? this.position(this.props.position) : null}>
           <Text style={{fontFamily : "Montserrat"}} className="content_text_Text">{this.props.text}</Text>
           </View>
-      </View>
+      </div>
     );
   }
 }
 
-var styles = StyleSheet.create({
-  content: {
-    alignSelf: "auto",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
-    flexDirection: "column"
-  },
-  view2: {
-    alignSelf: "auto",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
-    flexDirection: "column",
-    padding: 20,
-    backgroundColor: "rgba(255,255,255,1)",
-    borderRadius: 15,
-  },
-  text: {
-    textAlign: "left",
-    color: "#666",
-    alignSelf: "stretch",
-    fontWeight: "normal",
-    fontSize: 20,
-    fontFamily: 'Montserrat'
-  }
-});

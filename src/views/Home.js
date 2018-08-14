@@ -35,32 +35,3 @@ export default class Home extends Component {
   }
 }
 
-// var styles = StyleSheet.create({
-//   content: {
-//     backgroundColor: "#eee",
-//     alignSelf: "stretch",
-//     flex: 1,
-//     alignItems: "flex-start",
-//     justifyContent: "flex-start",
-//     flexDirection: "row"
-//   },
-//   fragment: {
-//     alignSelf: "stretch",
-//     flex: 1
-//   },
-//   view2: {
-//     alignSelf: "stretch",
-//     flex: 1,
-//     alignItems: "flex-start",
-//     justifyContent: "flex-start",
-//     flexDirection: "column"
-//   },
-//   fragment2: {
-//     alignSelf: "stretch",
-//     flex: 1
-//   },
-//   fragment3: {
-//     alignSelf: "stretch",
-//     flex: 1
-//   }
-// });
