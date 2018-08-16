@@ -601,6 +601,7 @@
 }
 
 .content_inputCustom_textinput2 {
+  outline: none; /* tirar a borda do input */
   color: #666666;
   align-self: stretch;
   text-align: left;
