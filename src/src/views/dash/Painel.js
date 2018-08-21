@@ -204,7 +204,7 @@ export default class Login extends Component {
       // console.log(this.state.info);
       if(this.state.load)return(<Load/>) ;
       return (
-        <div className="view content_painel">
+        <div style={{minHeight:0}} className="view content_painel">
           {false&&<Header/>}
           <Hidden smUp >
             <div className="view content_painel_content4">
@@ -245,7 +245,7 @@ export default class Login extends Component {
             </div>
           </Hidden>
           <Hidden smDown>
-            <div className="view content_painel_content2">
+            <div style={{minHeight:0}} className="view content_painel_content2">
               {this.historico()}
               {this.state.digitando&&
               <Digitando/>
@@ -282,7 +282,7 @@ export default class Login extends Component {
     historico(){
       this.altura()
       return(
-        <div id="chat" className="view conteiner_chat" >
+        <div id="chat" style={{minHeight:0}} className="view conteiner_chat" >
           <CustomScroll flex="1" id="scrollp" >
             <Chat
               nomeUser={this.state.nomeUser}
