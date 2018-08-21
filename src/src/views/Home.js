@@ -24,7 +24,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div style={{minHeight: 0}} className="view content_home">
+      <div className="view content_home">
         <DashPainel
           screenProps={this.props.screenProps}
           navigation={this.props.navigation}

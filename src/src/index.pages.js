@@ -41,7 +41,7 @@ export default class Navegation extends React.Component {
     return (
       <Provider ref={"pro"} store={this.props.store}>
         <Router ref={v => (this.router = v)} history={customHistory}>
-          <View style={{ flex: 1, minHeight: 0 }}>
+          <View style={{ flex: 1 }}>
 
             <View
               style={{
@@ -49,8 +49,7 @@ export default class Navegation extends React.Component {
                 flex: 1,
                 alignItems: "flex-start",
                 justifyContent: "flex-start",
-                flexDirection: "column",
-                minHeight: 0
+                flexDirection: "column"
               }}
             >
               {this.props.store.getState().user ? (
