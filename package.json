@@ -33,12 +33,9 @@
     "redux-router": "^2.1.2"
   },
   "scripts": {
-    "copy-static": "cp -rf ./build/static ../api/public/",
-    "copy-html": "cp -rf ./build/index.html ../api/public/index.html",
-    "copy": "npm run copy-static; npm run copy-html",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:clean": "cd build && mv static/js/*.js js/chat.js && mv static/css/*.css css/chat.css",
+    "build:clean": "cd build && mv static/js/*.js js/chat.js && rm -rf static/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
