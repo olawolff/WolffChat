@@ -240,8 +240,8 @@ export class Avatar extends Component {
               <Image
                 className="content_index_imagePhone"
                 style={{ marginTop: 3 }}
-                height={30}
-                width={30}
+                height={25}
+                width={25}
                 source={item.position == "left" ? iconWolff : iconUser}
                 resizeMode={"contain"}
               />
