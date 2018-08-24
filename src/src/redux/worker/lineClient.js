@@ -72,6 +72,8 @@ export function getMessages(streamEvent) {
         exampleSocket.onmessage = (event)=> {
           // console.log(event);
           if (event.data) {
+            //console.log(streamEvent);
+            // funcao init do Painel.js
             streamEvent(JSON.parse(event.data));
           }
         };

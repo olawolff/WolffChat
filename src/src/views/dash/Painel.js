@@ -26,6 +26,13 @@ import {Avatar} from "../chat/index";
 let listaEspera = [];
 let usoDaLista = null;
 export default class Login extends Component {
+/* Inicia chamando a func render(),
+ * após é chamada a func componentDidMount(), que chama a func init()
+ * em init() é passado para a func getMessages() do lineClient.js o proprio init()
+ * e entao é chamado this.delayOptions() passando como arg as activities
+ * 
+*/
+
   constructor(props) {
     super(props);
     this.state = {
@@ -39,6 +46,7 @@ export default class Login extends Component {
   }
 
   componentDidMount() {
+    console.log("chamou didmount");
     this.init()
   }
 
@@ -53,6 +61,7 @@ export default class Login extends Component {
 
   proximoDaLista(){
     if(listaEspera[0]){
+      console.log(listaEspera[0]);
       listaEspera[0].requisicao();
       listaEspera.splice(0, 1);
       if(listaEspera.length <= 1){
@@ -113,6 +122,7 @@ export default class Login extends Component {
         aqui.orientacao()
       }else{
        setTimeout(() => {
+         console.log("comecou a contar");
         aqui.proximoDaLista();       
        }, 3000); 
        
@@ -124,6 +134,7 @@ export default class Login extends Component {
   }
 
   init(){
+    console.log("chamou o init");
     getMessages(({activities,watermark})=>{
       let {list}=this.state;
       if (activities&&activities[0]) {
