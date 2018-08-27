@@ -108,6 +108,7 @@ export default class Chat extends Component {
         <Hidden xsDown>
           <div className="view content_inputCustom_view4">
             <TextInput
+            id="chat-text-input"
               style={{fontSize: 24}}
               ref={(text) => {this.text = text}}
               className="content_inputCustom_textinput2"

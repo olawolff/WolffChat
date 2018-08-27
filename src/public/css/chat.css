@@ -94,6 +94,7 @@
   flex-direction: row;
   margin-top: 20px;
   display: flex;
+  flex-wrap: wrap;
 }
 }
 
@@ -104,6 +105,7 @@
       justify-content: flex-start;
       flex-direction: row;
       margin-top: 20px;
+      flex-wrap: wrap;
     }
     }
 
@@ -758,6 +760,7 @@
   padding: 15px;
   justify-content: flex-start;
   flex-direction: column;
+  min-height: 0px;
 }
 
 .content_painel_view6 {
@@ -772,6 +775,7 @@
   flex: 1;
   padding: 10px;
   flex-direction: column;
+  min-height: 0px;
 }
 
 .scroll_view {
