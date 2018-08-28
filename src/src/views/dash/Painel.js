@@ -238,7 +238,7 @@ export default class Login extends Component {
             </div>
           </Hidden>
           <Hidden mdUp xsDown>
-            <div className="view content_painel_content3">
+            <div className="view content_painel_content3" style={{minHeight: 0}}>
               {this.historico()}
               {this.state.digitando&&
               <Digitando/>
@@ -321,41 +321,49 @@ export default class Login extends Component {
           <Hidden smUp>
           <div className="content_index_view7Phone_align_digitando">
           <div className="content_index_positionDigitado">
-                <Avatar item={{position:"left"}} nomeUser=''/>
+                <Avatar item={{position:"left",digitando:true}} nomeUser=''/>
+                
                 </div>
-                <div className="content_index_view5Phone">
-                <div className="view content_index_view2">
-                <Image
+                {/*<div className="content_index_view5Phone">
+                <div className="view content_index_view2">*/}
+                
+                {/*<Image
                   className="content_index_imagePhone"
                   height={22}
                   width={"auto"}
                   minWidth={25}
                   source={wolffGif}
                   resizeMode={"contain"}
-                  />
+                />*/}
                   {/* <LinearProgress color="primary" className="content_index_progress" /> */}
-                  </div>
-                  </div>
+                  {/*</div>
+                  </div>*/}
               </div>
+              <span style={{fontFamily: 'Montserrat',marginLeft: 5.5,fontSize: 12,fontWeight: 200}}>
+                Está digitando...
+              </span>
           </Hidden>
           <Hidden xsDown>
           <div className="content_index_view7_align_digitando">
-            <Avatar item={{position:"left"}} nomeUser=''/>
-            <div className="content_index_view5">
-              <div className="view content_index_view2">
-              <Image
+            <Avatar item={{position:"left",digitando:true}} nomeUser=''/>
+            <span style={{fontFamily: 'Montserrat',marginLeft: 5.5,fontSize: 12,fontWeight: 200}}>
+              Está digitando...
+            </span>
+            {/*<div className="content_index_view5">
+              <div className="view content_index_view2">*/}
+              {/*<Image
                   className="content_index_imagePhone"
                   height={22}
                   minWidth={25}
                   width={"auto"}
                   source={wolffGif}
                   resizeMode={"contain"}
-                  />
+              />*/}
                 {/* <LinearProgress color="primary" className="content_index_progress" /> */}
+              {/*</div>
+              </div>*/}
               </div>
-              </div>
-              </div>
-
+              
             <div  className="view content_index_view6"/>
           </Hidden>
           </div>

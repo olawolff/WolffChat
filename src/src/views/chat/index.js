@@ -210,13 +210,14 @@ export class Avatar extends Component {
                 ? "content_index_view3Phone_left"
                 : "content_index_view3Phone_else")
             }
+            style={item.digitando ? {minHeight: 15,minWidth: 15} : null}
           >
             {((this.props.nomeUser == "" || item.position == "left") && (
               <Image
                 className="content_index_imagePhone"
-                height={20}
-                width={20}
-                style={{ marginTop: 3 }}
+                height={item.digitando ? 8.75 : 20}
+                width={item.digitando ? 6.88 : 20}
+                style={item.digitando ? { margin: [3.75,4.06,2.5,4.06] } : { marginTop: 3 }}
                 source={item.position == "left" ? iconWolff : iconUser}
                 resizeMode={"contain"}
               />
@@ -235,13 +236,14 @@ export class Avatar extends Component {
                 ? "content_index_view3Phone_left"
                 : "content_index_view3Phone_else")
             }
+            style={item.digitando ? {minHeight: 15,minWidth: 15} : null}
           >
             {((this.props.nomeUser == "" || item.position == "left") && (
               <Image
                 className="content_index_imagePhone"
-                style={{ marginTop: 3 }}
-                height={25}
-                width={25}
+                style={item.digitando ? { margin: [3.75,4.06,2.5,4.06] } : { marginTop: 3 }}
+                height={item.digitando ? 8.75 : 25}
+                width={item.digitando ? 6.88 : 25}
                 source={item.position == "left" ? iconWolff : iconUser}
                 resizeMode={"contain"}
               />
