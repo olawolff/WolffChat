@@ -114,7 +114,7 @@
   color:inherit;
   align-self: stretch;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   font-family: 'Montserrat';
 }
 
@@ -179,6 +179,7 @@
         height: 0px !important;
 }
 }
+
 
 .MuiIconButton-root-46{
     color: #666
@@ -616,6 +617,7 @@
 }
 
 .content_inputCustom_textinput3 {
+  outline: none;
   color: rgba(0,0,0,1);
   align-self: stretch;
   text-align: left;
@@ -1055,3 +1057,57 @@
     border-radius: 15px;
 }
 
+@media screen and (max-width: 414px) {
+  .content_text_Text {
+    text-align: left;
+    color: #666666;
+    align-self: stretch;
+    font-weight: normal;
+    font-size: 14px;
+    font-family: 'Montserrat';
+    line-height: 1.2 !important;
+  }
+  .content_painel_content4 {
+    flex: 1;
+    background-color: rgba(238,238,238,1);
+    align-items: flex-start;
+    padding: 0px;
+    justify-content: flex-start;
+    flex-direction: column;
+    min-height: 0px;
+  }
+  .content_painel_view42 {
+    align-self: stretch;
+    flex: 1;
+    padding: 0px 0px 10px 0px;
+    flex-direction: column;
+    min-height: 0px;
+  }
+  .content_index_item {
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row !important;
+    margin-top: 0px !important;
+  }
+  .content_inputCustom {
+    align-self: stretch;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 0px 15px 15px 15px;
+  }
+  .content_index_content {
+    align-self: stretch;
+    flex: 1;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-right: 10px;
+  }
+}
+
+.MuiLinearProgress-barColorPrimary-23 {
+  background-color: #55A145 !important;
+}
