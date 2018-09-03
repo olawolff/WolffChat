@@ -46,11 +46,11 @@ export default class Login extends Component {
   }
 
   componentDidMount() {
-    console.log("chamou didmount");
     this.init()
   }
 
   listaEspera(callback){
+    // o callback é a func delayOptions()
     if(!usoDaLista){
       callback()
       usoDaLista = true;
@@ -60,8 +60,8 @@ export default class Login extends Component {
   }
 
   proximoDaLista(){
+    // a listaEspera é uma lista de func delayOptions()
     if(listaEspera[0]){
-      console.log(listaEspera[0]);
       listaEspera[0].requisicao();
       listaEspera.splice(0, 1);
       if(listaEspera.length <= 1){
@@ -99,7 +99,7 @@ export default class Login extends Component {
           //             list.find(x => x.channelData&&x.channelData.localId === msg.channelData.localId)= {...oldItem,...msg,respondido:true};
           //             console.log(oldItem);
           //             console.log(list);
-        }else {
+        } else {
           aqui.state.info=msg.entities&&msg.entities[0]?msg.entities[0]:{};
           list.push({
             id: msg.id,
@@ -112,19 +112,18 @@ export default class Login extends Component {
             attachments:msg.attachments
           })
         }
-          pos++
-          proximo(pos);
+        pos++
+        proximo(pos);
         aqui.setState({
           list:list.sort((a,b) =>(  a.timestamp > b.timestamp ? 1 : -1)),load:false,
           // digitando:false,
           nomeUser:aqui.state.info.Nome?aqui.state.info.Nome:aqui.state.nomeUser
         })
         aqui.orientacao()
-      }else{
+      } else{
        setTimeout(() => {
-         console.log("comecou a contar");
         aqui.proximoDaLista();       
-       }, 3000); 
+       }, 0); 
        
       }
     
@@ -134,12 +133,10 @@ export default class Login extends Component {
   }
 
   init(){
-    console.log("chamou o init");
     getMessages(({activities,watermark})=>{
       let {list}=this.state;
       if (activities&&activities[0]) {
         this.delayOptions(activities)
-        // console.log(activities[0]);
         // activities.map(msg=>{
          
 
@@ -148,164 +145,173 @@ export default class Login extends Component {
       }
     })
   }
+
   enviar(res){
+    //console.log("enviou");
     if(!this.state.message&&!res)return;
     let {list}=this.state;
+    //console.log('let {list}=this.state');
+    //console.log(list);
     var localId = new Date().getTime();
     var activity = {
       id: localId,
       type: 'message',
       text: (this.message?this.message+"\n":'')+(res?res:this.state.message),
       from: { id: 'james' },
-      channelData: { localId: localId } };
-      this.message =activity.text;
-      this.activityId =activity.id;
-      if(list.find(x =>x.id=='agaurdando')){
+      channelData: { localId: localId } 
+    };
+    this.message =activity.text;
+    this.activityId =activity.id;
+    if(list.find(x =>x.id=='agaurdando')){
+      list=list.map(x=>{
+        if(x.id=='agaurdando'){
+          return{...x,...activity,id:'agaurdando',enviado:true, respondido: false}
+        }else {
+          return x;
+        }
+      })
+    } else {
+      list.push({...activity,position: "right",type: "text",timestamp:moment().toJSON(),id:'agaurdando',enviado:true});
+    }
+    this.eviarMassagem(activity,0/*activity.text.length*500*/);
+    this.orientacao()
+    this.setState({
+      message: "",
+      list
+    });
+  }
+
+  eviarMassagem(activity,time,old){
+    setTimeout( ()=> {
+      if((!this.state.message||old&&this.state.message==old)&&this.activityId==activity.id) {
+        let {list}=this.state;
         list=list.map(x=>{
           if(x.id=='agaurdando'){
-            return{...x,...activity,id:'agaurdando',enviado:true, respondido: false}
+            // console.log(33);
+            return{...x,...activity,enviado:true,respondido:false}
           }else {
             return x;
           }
         })
-      }else {
-        list.push({...activity,position: "right",type: "text",timestamp:moment().toJSON(),id:'agaurdando',enviado:true});
+        this.message=null;
+        this.orientacao()
+        message(activity);
+        this.setState({
+          list,
+          digitando:true,
+          info:{}
+        });
+      }else if(this.activityId==activity.id) {
+        this.eviarMassagem(activity,0,this.state.message)
       }
-      this.eviarMassagem(activity,activity.text.length*500);
-      this.orientacao()
-      this.setState({
-        message: "",
-        list
-      });
-    }
-    eviarMassagem(activity,time,old){
-      setTimeout( ()=> {
-        if((!this.state.message||old&&this.state.message==old)&&this.activityId==activity.id) {
-          let {list}=this.state;
-          list=list.map(x=>{
-            if(x.id=='agaurdando'){
-              // console.log(33);
-              return{...x,...activity,enviado:true,respondido:false}
-            }else {
-              return x;
+    }, time);
+  }
+
+  componentWillUnmount() {}
+
+  orientacao(){
+    setTimeout(function () {
+      $('.inner-container').animate({
+        scrollTop: $(".inner-container")[0].scrollHeight
+      }, 1000);
+    }, 30);
+  }
+
+  render() {
+    // console.log(this.state.info);
+    if(this.state.load)return(<Load/>) ;
+    return (
+      <div style={{minHeight:0}} className="view content_painel">
+        {false&&<Header/>}
+        <Hidden smUp >
+          <div className="view content_painel_content4">
+            <div className="view content_painel_view42">
+              {this.historico()}
+            </div>
+            {this.state.digitando&&
+            <Digitando/>
             }
-          })
-          this.message=null;
-          this.orientacao()
-          message(activity);
-          this.setState({
-            list,
-            digitando:true,
-            info:{}
-          });
-        }else if(this.activityId==activity.id) {
-          this.eviarMassagem(activity,1000,this.state.message)
-        }
-      }, time);
-    }
-    componentWillUnmount() {}
-    orientacao(){
-      setTimeout(function () {
-        $('.inner-container').animate({
-          scrollTop: $(".inner-container")[0].scrollHeight
-        }, 1000);
-      }, 30);
-    }
-    render() {
-      // console.log(this.state.info);
-      if(this.state.load)return(<Load/>) ;
-      return (
-        <div style={{minHeight:0}} className="view content_painel">
-          {false&&<Header/>}
-          <Hidden smUp >
-            <div className="view content_painel_content4">
-              <div className="view content_painel_view42">
-                {this.historico()}
-              </div>
-              {this.state.digitando&&
-              <Digitando/>
-              }
+            <InputCustom
+              value={this.state.message}
+              onChange={value => {
+                this.setState({ message: value});
+              }}
+              keyboardType={"default"}
+              enviar={()=>this.enviar()}
+              disabled={this.state.digitando}
+              info={this.state.info}
+              />
+          </div>
+        </Hidden>
+        <Hidden mdUp xsDown>
+          <div className="view content_painel_content3" style={{minHeight: 0}}>
+            {this.historico()}
+            {this.state.digitando&&
+            <Digitando/>
+            }
               <InputCustom
-                value={this.state.message}
-                onChange={value => {
-                  this.setState({ message: value});
-                }}
-                keyboardType={"default"}
-                enviar={()=>this.enviar()}
-                disabled={this.state.digitando}
-                info={this.state.info}
-                />
-            </div>
-          </Hidden>
-          <Hidden mdUp xsDown>
-            <div className="view content_painel_content3" style={{minHeight: 0}}>
-              {this.historico()}
-              {this.state.digitando&&
-              <Digitando/>
-              }
-               <InputCustom
-                value={this.state.message}
-                onChange={value => {
-                  this.setState({ message: value});
-                }}
-                keyboardType={"default"}
-                enviar={()=>this.enviar()}
-                disabled={this.state.digitando}
-                info={this.state.info}
-                />
-            </div>
-          </Hidden>
-          <Hidden smDown>
-            <div style={{minHeight:0}} className="view content_painel_content2">
-              {this.historico()}
-              {this.state.digitando&&
-              <Digitando/>
-              }
-              <InputCustom
-                value={this.state.message}
-                onChange={value => {
-                  this.setState({ message: value});
-                }}
-                keyboardType={"default"}
-                enviar={()=>this.enviar()}
-                disabled={this.state.digitando}
-                info={this.state.info}
-                />
-            </div>
-          </Hidden>
-        </div>
-      );
-    }
+              value={this.state.message}
+              onChange={value => {
+                this.setState({ message: value});
+              }}
+              keyboardType={"default"}
+              enviar={()=>this.enviar()}
+              disabled={this.state.digitando}
+              info={this.state.info}
+              />
+          </div>
+        </Hidden>
+        <Hidden smDown>
+          <div style={{minHeight:0}} className="view content_painel_content2">
+            {this.historico()}
+            {this.state.digitando&&
+            <Digitando/>
+            }
+            <InputCustom
+              value={this.state.message}
+              onChange={value => {
+                this.setState({ message: value});
+              }}
+              keyboardType={"default"}
+              enviar={()=>this.enviar()}
+              disabled={this.state.digitando}
+              info={this.state.info}
+              />
+          </div>
+        </Hidden>
+      </div>
+    );
+  }
 
-    altura(){
-      // let n=$("#chat")?$("#chat").height():null;
-      setTimeout(function () {
+  altura(){
+    // let n=$("#chat")?$("#chat").height():null;
+    setTimeout(function () {
 
-        if($("#chat").height)this.heightScroll=$("#chat").height();
-        // return this.heightScroll;
-        if($(".custom-scrollbar"))$(".custom-scrollbar").height(this.heightScroll-9);
-        if($(".inner-container"))$(".inner-container").height(this.heightScroll);
-      }, 19);
+      if($("#chat").height)this.heightScroll=$("#chat").height();
+      // return this.heightScroll;
+      if($(".custom-scrollbar"))$(".custom-scrollbar").height(this.heightScroll-9);
+      if($(".inner-container"))$(".inner-container").height(this.heightScroll);
+    }, 19);
 
-    }
+  }
     // <View  id="scrollp" className="view scroll_view" style={[styles.scroll,{height:this.altura()}]} >
 
-    historico(){
-      this.altura()
-      return(
-        <div id="chat" style={{minHeight:0}} className="view conteiner_chat" >
-          <CustomScroll flex="1" id="scrollp" >
-            <Chat
-              nomeUser={this.state.nomeUser}
-              list={this.state.list}
-              digitando={this.state.digitando}
-              enviar={(value)=>this.enviar(value)}
-              />
-          </CustomScroll>
-        </div>
-      )
-    }
+  historico(){
+    this.altura()
+    return(
+      <div id="chat" style={{minHeight:0}} className="view conteiner_chat" >
+        <CustomScroll flex="1" id="scrollp" >
+          <Chat
+            nomeUser={this.state.nomeUser}
+            list={this.state.list}
+            digitando={this.state.digitando}
+            enviar={(value)=>this.enviar(value)}
+            />
+        </CustomScroll>
+      </div>
+    )
   }
+}
 
   class Digitando extends Component {
     constructor(props) {
