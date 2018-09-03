@@ -1125,6 +1125,10 @@
 }
 
 .MuiLinearProgress-barColorPrimary-23 {
-  /*background-color: #55A145 !important;*/
+  background-color: #55A145 !important;
+}
+
+.content_load_progress .jss22 {
+  background-color: #55A145 !important;
 }
 
