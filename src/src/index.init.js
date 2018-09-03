@@ -44,7 +44,7 @@ export default class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider>
-        <View style={{ paddingTop: 0, minHeight: 0, flex: 1 }}>
+        <View className={this.props.className} style={{ paddingTop: 0, minHeight: 0, flex: 1 }}>
           <Alert />
           <RegisterScreens
             ref={v => (this.registerScreens = v)}

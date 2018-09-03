@@ -1,4 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.cow-chat * {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
 #chat-body{background: #ececec}
 /* Home.js */
 
@@ -1111,3 +1121,4 @@
 .MuiLinearProgress-barColorPrimary-23 {
   background-color: #55A145 !important;
 }
+

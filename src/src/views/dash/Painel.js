@@ -123,7 +123,7 @@ export default class Login extends Component {
       } else{
        setTimeout(() => {
         aqui.proximoDaLista();       
-       }, 0); 
+       }, 0);
        
       }
     

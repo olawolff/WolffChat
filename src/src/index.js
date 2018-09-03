@@ -4,5 +4,5 @@ import App from './index.init.js';
 //import './components/css/chat.css';
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App className="cow-chat" />, document.getElementById('root'));
 
