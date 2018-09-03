@@ -109,7 +109,7 @@ export default class Chat extends Component {
           <div className="view content_inputCustom_view4">
             <TextInput
             id="chat-text-input"
-              style={{fontSize: 24}}
+              style={{fontSize: 24, alignSelf: 'center'}}
               ref={(text) => {this.text = text}}
               className="content_inputCustom_textinput2"
               value={this.props.value}
