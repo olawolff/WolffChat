@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Content, View, StyleSheet } from "react-1app";
 import DashHeader from "./dash/Header.js";
 import DashPainel from "./dash/Painel.js";
+//import DashPainel from "./dash/Painel-old.js";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 export default class Home extends Component {
