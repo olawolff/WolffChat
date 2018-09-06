@@ -9,7 +9,7 @@ import CustomScroll from 'react-custom-scroll';
 import {Avatar} from "../chat/index";
 import $ from 'jquery';
 
-let delay = window.chat.bot_delayTime;
+let delay = window.chat.bot_delayTime ? window.chat.bot_delayTime : 1000;
 let mensagens = [];
 let espera = false; // para controle da digitação(wolff digitando) e bloquear input 
 let i = -1;
@@ -25,10 +25,10 @@ export default class Login extends Component {
         getMessages(({activities,watermark}) => {
             let {list} = this.state;
             if (activities&&activities[0]) {
-                console.log("Mensagens: ");
+                /*console.log("Mensagens: ");
                 console.log(activities);
                 console.log("watermark");
-                console.log(watermark);
+                console.log(watermark);*/
                 if(watermark && !espera) {
                     var aux = this.state.historico;
                     activities[0].position = "left";
@@ -39,8 +39,8 @@ export default class Login extends Component {
                     var mensagem = activities[0];
                     // calcula o tempo para exibir a mensagem 1 segundo para cada 5 caracteres, e no máximo 5 segundos
                     mensagem.time = (activities[0].text.length / 5 * this.state.delay) > 5000 ? 5000 : (activities[0].text.length / 5 * this.state.delay);
-                    console.log("tempo de espera");
-                    console.log(mensagem.time);
+                    /*console.log("tempo de espera");
+                    console.log(mensagem.time);*/
                     //filaEspera.push(activities[0]);
 
                     this.state.info = mensagem.entities && mensagem.entities[0] ? mensagem.entities[0] : {};
@@ -64,11 +64,14 @@ export default class Login extends Component {
     }
     // função recursiva para processar a fila de mensagens recebidas
     processarMensagem() {
-        console.log("lista espera: ");
-        console.log(this.state.filaEspera);
+        /*console.log("lista espera: ");
+        console.log(this.state.filaEspera);*/
         //this.orientacao();
         if(i >= 0) {
             var aux = this.state.historico;
+            // pega a ultima mensagem do histórico, a mensagem que foi enviada pelo usuário
+            // e altera o status para "respondido"
+            aux[aux.length-1].status = 'respondido';
             aux.push(this.state.filaEspera[i]);
             this.setState({historico:aux});
             this.orientacao();
@@ -77,12 +80,12 @@ export default class Login extends Component {
         if(i < this.state.filaEspera.length) {
             this.setState({digitando: true});
             this.orientacao();
-            console.log("esperando "+this.state.filaEspera[i].time+" segundos");
+            //console.log("esperando "+this.state.filaEspera[i].time+" segundos");
             setTimeout(this.processarMensagem, this.state.filaEspera[i].time);
         } else {
             this.setState({digitando: false});
             this.orientacao();
-            console.log("acabou a lista");
+            //console.log("acabou a lista");
             i = -1;
             this.state.filaEspera = [];
             espera = false;
@@ -97,7 +100,7 @@ export default class Login extends Component {
             type: 'message',
             text: resposta ? resposta : this.state.message,
             from: { id: 'james' },
-            status: 0
+            status: 'enviado'
         };
         espera = true;
         var aux = this.state.historico;
@@ -107,7 +110,10 @@ export default class Login extends Component {
         this.state.message = '';
         message(mensagem, () => {
             var aux = this.state.historico;
-            aux[aux.length-1].status = 1;
+            // pega a ultima mensagem do histórico, a mensagem que foi enviada pelo usuário
+            // e altera o status para "recebido"
+            aux[aux.length-1].status = 'recebido';
+            this.setState({historico: aux});
             this.processarMensagem();
         });
     }
@@ -115,33 +121,6 @@ export default class Login extends Component {
     componentDidMount() {
         this.init();
     }
-
-    /*render() {
-        return (
-            <div>
-                <h2>Mensagens:</h2>
-                <ul>
-                    {
-                        this.state.historico.map((msg) => {
-                            return (
-                                <li>{msg.text}</li>
-                            );
-                        })
-                    }
-                </ul>
-                <InputCustom
-                    value={this.state.message}
-                    onChange={value => {
-                        this.setState({ message: value});
-                    }}
-                    keyboardType={"default"}
-                    enviar={()=>this.enviarMensagem()}
-                    disabled={this.state.digitando}
-                    info={this.state.info}
-                />
-            </div>
-        );
-    }*/
     // função para calcular o tamanho da div do chat e sua barra de rolagem
     altura() {
         setTimeout(function () {

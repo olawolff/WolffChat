@@ -358,7 +358,35 @@ class InfoMessage extends Component {
                 (this.props.nomeUser && item.position == "right" ? " - " : "") +
                 moment(item.timestamp).format("hh:mm")}
             </TextView>
-            {item.position != "left" &&
+            {
+              (() => {
+                if(item.position != "left"){
+                  return (<View
+                      className={
+                        "content_index_status_cel " +
+                        (item.status != "enviado"
+                          ? "content_index_status_back_true"
+                          : "content_index_status_back_false")
+                      }
+                    />)
+                }
+              })()
+            }
+            {
+              (() => {
+                if(item.position != "left" && item.status != "enviado") {
+                  return (<View
+                    className={
+                      "content_index_status_cel " +
+                      (item.status == "respondido"
+                        ? "content_index_status_back_true"
+                        : "content_index_status_back_false")
+                    }
+                  />)
+              }
+              })()
+            }
+            {/*item.position != "left" &&
               item.id != "agaurdando" &&
               item.respondido && (
                 <View
@@ -369,8 +397,8 @@ class InfoMessage extends Component {
                       : "content_index_status_back_false")
                   }
                 />
-              )}
-            {item.position != "left" &&
+              )*/}
+            {/*item.position != "left" &&
               item.id == "agaurdando" && (
                 <View
                   className={
@@ -378,8 +406,8 @@ class InfoMessage extends Component {
                     "content_index_status_back_false"
                   }
                 />
-              )}
-            {item.position != "left" &&
+              )*/}
+            {/*item.position != "left" &&
               item.id != "agaurdando" &&
               !item.respondido && (
                 <View
@@ -390,8 +418,8 @@ class InfoMessage extends Component {
                       : "content_index_status_back_false")
                   }
                 />
-              )}
-            {item.position != "left" &&
+              )*/}
+            {/*item.position != "left" &&
               item.id != "agaurdando" && (
                 <View
                   className={
@@ -401,7 +429,7 @@ class InfoMessage extends Component {
                       : "content_index_status_back_false")
                   }
                 />
-              )}
+              )*/}
           </div>
         </Hidden>
       </div>
