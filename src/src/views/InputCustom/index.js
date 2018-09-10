@@ -87,6 +87,7 @@ export default class Chat extends Component {
               placeholder={placeholder}
               inputNative={true}
               onSubmitEditing={()=>this.props.enviar()}
+              style={{alignSelf: 'center'}}
               // disabled={this.props.disabled}
               // mask={marcara}
               />
@@ -109,7 +110,7 @@ export default class Chat extends Component {
           <div className="view content_inputCustom_view4">
             <TextInput
             id="chat-text-input"
-              style={{fontSize: 24}}
+              style={{fontSize: 24, alignSelf: 'center', minHeight: 35}}
               ref={(text) => {this.text = text}}
               className="content_inputCustom_textinput2"
               value={this.props.value}

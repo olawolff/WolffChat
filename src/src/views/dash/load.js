@@ -27,7 +27,7 @@ export default class load extends Component {
           resizeMode={"contain"}
           />
         <div className="view content_load_view2">
-          <LinearProgress color="primary" className="content_load_progress" />
+          <LinearProgress style={{backgroundColor: '#55A145 !important;'}} color="primary" className="content_load_progress" />
         </div>
       </div>
     );

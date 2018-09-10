@@ -210,13 +210,14 @@ export class Avatar extends Component {
                 ? "content_index_view3Phone_left"
                 : "content_index_view3Phone_else")
             }
+            style={item.digitando ? {minHeight: 15,minWidth: 15} : null}
           >
             {((this.props.nomeUser == "" || item.position == "left") && (
               <Image
                 className="content_index_imagePhone"
-                height={20}
-                width={20}
-                style={{ marginTop: 3 }}
+                height={item.digitando ? 8.75 : 20}
+                width={item.digitando ? 6.88 : 20}
+                style={item.digitando ? { margin: [3.75,4.06,2.5,4.06] } : { marginTop: 3 }}
                 source={item.position == "left" ? iconWolff : iconUser}
                 resizeMode={"contain"}
               />
@@ -235,13 +236,14 @@ export class Avatar extends Component {
                 ? "content_index_view3Phone_left"
                 : "content_index_view3Phone_else")
             }
+            style={item.digitando ? {minHeight: 15,minWidth: 15} : null}
           >
             {((this.props.nomeUser == "" || item.position == "left") && (
               <Image
                 className="content_index_imagePhone"
-                style={{ marginTop: 3 }}
-                height={25}
-                width={25}
+                style={item.digitando ? { margin: [3.75,4.06,2.5,4.06] } : { marginTop: 3 }}
+                height={item.digitando ? 8.75 : 25}
+                width={item.digitando ? 6.88 : 25}
                 source={item.position == "left" ? iconWolff : iconUser}
                 resizeMode={"contain"}
               />
@@ -291,7 +293,35 @@ class InfoMessage extends Component {
                 (this.props.nomeUser && item.position == "right" ? " - " : "") +
                 moment(item.timestamp).format("hh:mm")}
             </TextView>
-            {item.position != "left" &&
+            {
+              (() => {
+                if(item.position != "left"){
+                  return (<View
+                      className={
+                        "content_index_status " +
+                        (item.status != "enviado"
+                          ? "content_index_status_back_true"
+                          : "content_index_status_back_false")
+                      }
+                    />)
+                }
+              })()
+            }
+            {
+              (() => {
+                if(item.position != "left" && item.status != "enviado") {
+                  return (<View
+                    className={
+                      "content_index_status " +
+                      (item.status == "respondido"
+                        ? "content_index_status_back_true"
+                        : "content_index_status_back_false")
+                    }
+                  />)
+              }
+              })()
+            }
+            {/*item.position != "left" &&
               item.id != "agaurdando" &&
               item.respondido && (
                 <View
@@ -302,16 +332,16 @@ class InfoMessage extends Component {
                       : "content_index_status_back_false")
                   }
                 />
-              )}
-            {item.position != "left" &&
+              )*/}
+            {/*item.position != "left" &&
               item.id == "agaurdando" && (
                 <View
                   className={
                     "content_index_status " + "content_index_status_back_false"
                   }
                 />
-              )}
-            {item.position != "left" &&
+              )*/}
+            {/*item.position != "left" &&
               item.id != "agaurdando" &&
               !item.respondido && (
                 <View
@@ -322,8 +352,8 @@ class InfoMessage extends Component {
                       : "content_index_status_back_false")
                   }
                 />
-              )}
-            {item.position != "left" &&
+              )*/}
+            {/*item.position != "left" &&
               item.id != "agaurdando" && (
                 <View
                   className={
@@ -333,7 +363,7 @@ class InfoMessage extends Component {
                       : "content_index_status_back_false")
                   }
                 />
-              )}
+              )*/}
           </div>
         </Hidden>
         <Hidden xsDown>
@@ -356,7 +386,35 @@ class InfoMessage extends Component {
                 (this.props.nomeUser && item.position == "right" ? " - " : "") +
                 moment(item.timestamp).format("hh:mm")}
             </TextView>
-            {item.position != "left" &&
+            {
+              (() => {
+                if(item.position != "left"){
+                  return (<View
+                      className={
+                        "content_index_status_cel " +
+                        (item.status != "enviado"
+                          ? "content_index_status_back_true"
+                          : "content_index_status_back_false")
+                      }
+                    />)
+                }
+              })()
+            }
+            {
+              (() => {
+                if(item.position != "left" && item.status != "enviado") {
+                  return (<View
+                    className={
+                      "content_index_status_cel " +
+                      (item.status == "respondido"
+                        ? "content_index_status_back_true"
+                        : "content_index_status_back_false")
+                    }
+                  />)
+              }
+              })()
+            }
+            {/*item.position != "left" &&
               item.id != "agaurdando" &&
               item.respondido && (
                 <View
@@ -367,8 +425,8 @@ class InfoMessage extends Component {
                       : "content_index_status_back_false")
                   }
                 />
-              )}
-            {item.position != "left" &&
+              )*/}
+            {/*item.position != "left" &&
               item.id == "agaurdando" && (
                 <View
                   className={
@@ -376,8 +434,8 @@ class InfoMessage extends Component {
                     "content_index_status_back_false"
                   }
                 />
-              )}
-            {item.position != "left" &&
+              )*/}
+            {/*item.position != "left" &&
               item.id != "agaurdando" &&
               !item.respondido && (
                 <View
@@ -388,8 +446,8 @@ class InfoMessage extends Component {
                       : "content_index_status_back_false")
                   }
                 />
-              )}
-            {item.position != "left" &&
+              )*/}
+            {/*item.position != "left" &&
               item.id != "agaurdando" && (
                 <View
                   className={
@@ -399,7 +457,7 @@ class InfoMessage extends Component {
                       : "content_index_status_back_false")
                   }
                 />
-              )}
+              )*/}
           </div>
         </Hidden>
       </div>
