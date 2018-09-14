@@ -42,9 +42,7 @@ export default class Chat extends Component {
       case "CPF":
       return {marcara:'999.999.999-99',placeholder,tooltip};
       case "TELEFONE":
-      return {marcara:'(99) 9999 9999',placeholder,tooltip};
-      case " CELULAR":
-      return {marcara:'(99) 99999 9999',placeholder,tooltip};
+      return {marcara:'phone',placeholder,tooltip};
       case "CEP":
       return {marcara:'99999-999',placeholder,tooltip};
       case "DATA":
@@ -87,6 +85,7 @@ export default class Chat extends Component {
               placeholder={placeholder}
               inputNative={true}
               onSubmitEditing={()=>this.props.enviar()}
+              style={{alignSelf: 'center'}}
               // disabled={this.props.disabled}
               // mask={marcara}
               />
@@ -109,7 +108,7 @@ export default class Chat extends Component {
           <div className="view content_inputCustom_view4">
             <TextInput
             id="chat-text-input"
-              style={{fontSize: 24, alignSelf: 'center'}}
+              style={{fontSize: 24, alignSelf: 'center', minHeight: 35}}
               ref={(text) => {this.text = text}}
               className="content_inputCustom_textinput2"
               value={this.props.value}
