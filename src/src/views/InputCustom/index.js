@@ -42,9 +42,7 @@ export default class Chat extends Component {
       case "CPF":
       return {marcara:'999.999.999-99',placeholder,tooltip};
       case "TELEFONE":
-      return {marcara:'(99) 9999 9999',placeholder,tooltip};
-      case " CELULAR":
-      return {marcara:'(99) 99999 9999',placeholder,tooltip};
+      return {marcara:'phone',placeholder,tooltip};
       case "CEP":
       return {marcara:'99999-999',placeholder,tooltip};
       case "DATA":
