@@ -38,8 +38,13 @@ export default class Login extends Component {
                     var filaEspera = this.state.filaEspera;
                     var mensagem = activities[0];
                     // calcula o tempo para exibir a mensagem 1 segundo para cada 5 caracteres, e no máximo 5 segundos
-                    mensagem.time = (activities[0].text.length / 5 * this.state.delay) > 5000 ? 5000 : (activities[0].text.length / 5 * this.state.delay);
-                    /*console.log("tempo de espera");
+                    mensagem.time = this.calculaDelay(mensagem);
+                    
+                    /*console.log("activities: ");
+                    console.log(activities[0]);
+                    console.log("tamanho do texto: ");
+                    console.log(activities[0].text.length);
+                    console.log("tempo de espera");
                     console.log(mensagem.time);*/
                     //filaEspera.push(activities[0]);
 
@@ -152,6 +157,22 @@ export default class Login extends Component {
                 </CustomScroll>
             </div>
         );
+    }
+
+    calculaDelay(msg) {
+        var delay = 0;
+        if(msg.text.length > 0) {
+            delay = msg.text.length / 5 * this.state.delay;
+        } else if(msg.attachments.length > 0) {
+            delay = msg.attachments[0]['content']['text'].length / 5 * this.state.delay;
+        } else {
+            delay = 1000;
+        }
+
+        if(delay > 5000) {
+            delay = 5000;
+        }
+        return delay;
     }
 
     render() {

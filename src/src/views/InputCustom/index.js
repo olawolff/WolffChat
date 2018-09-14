@@ -78,13 +78,15 @@ export default class Chat extends Component {
               className="content_inputCustom_textinput3"
               value={this.props.value}
               onChange={value => {
-                if(!this.props.disabled)this.props.onChange(maskFormate(value,marcara));
+                this.props.onChange(maskFormate(value,marcara));
               }}
               keyboardType={"default"}
               id="cow-input"
               placeholder={placeholder}
               inputNative={true}
-              onSubmitEditing={()=>this.props.enviar()}
+              onSubmitEditing={()=> {
+                if(!this.props.disabled)this.props.enviar();
+              }}
               style={{alignSelf: 'center'}}
               // disabled={this.props.disabled}
               // mask={marcara}
@@ -113,12 +115,14 @@ export default class Chat extends Component {
               className="content_inputCustom_textinput2"
               value={this.props.value}
               onChange={value => {
-                if(!this.props.disabled)this.props.onChange(maskFormate(value,marcara));
+                this.props.onChange(maskFormate(value,marcara));
               }}
               keyboardType={"default"}
               placeholder={placeholder}
               inputNative={true}
-              onSubmitEditing={()=>this.props.enviar()}
+              onSubmitEditing={()=> {
+                if(!this.props.disabled)this.props.enviar();
+              }}
               // disabled={this.props.disabled}
               // mask={marcara}
               />
@@ -132,7 +136,6 @@ export default class Chat extends Component {
 
             </TouchableOpacity>
           </div>
-          <TextView className="content_inputCustom_text2">{"As informações aqui inseridas são de uso privado e confidencial"}</TextView>
         </Hidden>
       </div>
     );

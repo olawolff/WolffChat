@@ -26,7 +26,7 @@ export default class Opitions extends Component {
         <div className="content_opitions_view">
 
           {item.buttons&&item.buttons.map((bot)=>(
-            <TouchableOpacity className="content_opitions_button" style={{width:130,marginBottom: 5}}
+            <TouchableOpacity className="content_opitions_button" style={{marginBottom: 5}}
               disabled={item.usado}
               onPress={() => {
                 this.props.enviar(bot.value)

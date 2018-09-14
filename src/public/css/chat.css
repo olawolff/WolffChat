@@ -129,7 +129,7 @@
   text-align: center;
   color:inherit;
   align-self: stretch;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 18px;
   font-family: 'Montserrat';
 }
@@ -141,7 +141,7 @@
   flex-direction: column;
   border-radius: 40px;
   height: 49.51px;
-  width: 113.48px;
+  width: auto;
   margin-right: 30px;
   border-style: solid;
   border-width: 3px;
@@ -161,7 +161,7 @@
   flex-direction: column;
   border-radius: 40px;
   height: 49.51px;
-  width: 113.48px;
+  width: auto;
   margin-right: 30px;
   border-style: solid;
   border-width: 3px;
