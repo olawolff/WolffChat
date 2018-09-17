@@ -48,7 +48,8 @@ export default class Login extends Component {
                     console.log(mensagem.time);*/
                     //filaEspera.push(activities[0]);
 
-                    this.state.info = mensagem.entities && mensagem.entities[0] ? mensagem.entities[0] : {};
+                    // seta algumas informações, ex: Placeholder, type, tooltip
+                    //this.state.info = mensagem.entities && mensagem.entities[0] ? mensagem.entities[0] : {};
                     filaEspera.push({
                         id: mensagem.id,
                         position: "left",
@@ -78,6 +79,8 @@ export default class Login extends Component {
             // e altera o status para "respondido"
             aux[aux.length-1].status = 'respondido';
             aux.push(this.state.filaEspera[i]);
+            // seta algumas informações, ex: Placeholder, type, tooltip
+            this.state.info = aux[aux.length-1].entities && aux[aux.length-1].entities[0] ? aux[aux.length-1].entities[0] : {};
             this.setState({historico:aux});
             this.orientacao();
         }

@@ -18,7 +18,7 @@ export default class TextChat extends Component {
 
   render() {
       return (
-        <div className={this.props.position == "left" && this.props.text == "Confirma??" ? "itemChat_text_content_left" : "itemChat_text_content_right"}>
+        <div className={this.props.position == "left" /*&& this.props.text == "Confirma??"*/ ? "itemChat_text_content_left" : "itemChat_text_content_right"}>
           <View className="itemChat_text_view2 " style={this.props.avatar ? this.position(this.props.position) : null}>
           <Text style={{fontFamily : "Montserrat"}} className="content_text_Text">{this.props.text}</Text>
           </View>
