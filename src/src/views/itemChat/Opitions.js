@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TextChat from './Text';
+import $ from 'jquery';
 
 import { Content, View, Text, StyleSheet,TouchableOpacity } from "react-1app";
 
@@ -7,6 +8,12 @@ export default class Opitions extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  setFocusInput() {
+    setTimeout(function () {
+      $("#chat-text-input").focus();
+    }, 50);
   }
 
   componentDidMount() {}
@@ -26,11 +33,12 @@ export default class Opitions extends Component {
         <div className="content_opitions_view">
 
           {item.buttons&&item.buttons.map((bot)=>(
-            <TouchableOpacity className="content_opitions_button" style={{width:130,marginBottom: 5}}
+            <TouchableOpacity className="content_opitions_button" style={{marginBottom: 5}}
               disabled={item.usado}
               onPress={() => {
                 this.props.enviar(bot.value)
                 item.usado=true;
+                this.setFocusInput();
                 // if(!this.props.disabled)this.props.enviar();
               }}>
               <Text style={{fontFamily: "Montserrat", alignItems: "center"}} className="content_opitions_text">{bot.title}</Text>
