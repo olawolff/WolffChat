@@ -101,6 +101,7 @@ export default class Login extends Component {
     }
 
     enviarMensagem(resposta) {
+        if((!this.state.message || this.state.message == ' ') && !resposta) { return; };
         var localId = new Date().getTime();
         var mensagem = {
             id: localId,
