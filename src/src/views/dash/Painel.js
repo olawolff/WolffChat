@@ -17,7 +17,7 @@ let i = -1;
 export default class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {list:[], message: '', open: true, nomeUser: "", load:true, info:{}, historico: [], filaEspera:[], digitando: false, delay: delay}; // delay default 1000
+        this.state = {list:[], message: '', open: true, nomeUser: "", load:true, info:{}, historico: [], filaEspera:[], digitando: false, delay: 0}; // delay default 1000
         this.processarMensagem = this.processarMensagem.bind(this);
     }
 
@@ -101,13 +101,14 @@ export default class Login extends Component {
     }
 
     enviarMensagem(resposta) {
-        if((!this.state.message || this.state.message == ' ') && !resposta) { return; };
+        var x = this.state.message.trim();
+        if((!x || x == ' ') && !resposta) { return; };
         var localId = new Date().getTime();
         var mensagem = {
             id: localId,
             position: "right",
             type: 'message',
-            text: resposta ? resposta : this.state.message,
+            text: resposta ? resposta : x,
             from: { id: 'james' },
             status: 'enviado'
         };

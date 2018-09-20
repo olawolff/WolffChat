@@ -145,7 +145,7 @@
   margin-right: 30px;
   border-style: solid;
   border-width: 3px;
-
+  min-width: 140px;
   border: double 4px transparent;
   border-radius: 80px;
   background-image: linear-gradient(rgba(238,238,238,1), rgba(238,238,238,1)), radial-gradient(circle at top left, #64A73F, #AFC700);
